@@ -1,10 +1,17 @@
 // import React from 'react'
+// import css from '../../App.css';
+
+import { Link } from 'react-router-dom';
 
 const NotFoundPage = () => {
   return (
     <div>
-      <h1>NotFoundPage</h1>
-      <button>Home</button>
+      <h1>Page Not Found</h1>
+      <Link to="/">
+        <button type="button" className="btn">
+          Home
+        </button>
+      </Link>
     </div>
   );
 };

@@ -4,3 +4,11 @@
   display: flex;
   gap: 20px;
 }
+.movieDetailsWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.movieImg {
+  width: 200px;
+}

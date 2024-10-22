@@ -1,20 +1,47 @@
-// import React from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { getMovieReviews } from '../../api/movies';
+
+import css from './MovieReviews.module.css';
 
 const MovieReviews = () => {
+  const [reviews, setReviews] = useState([]);
+  const [error, setError] = useState(null);
+
+  const { movieId } = useParams();
+  // console.log('MovieCast - movieId: ', movieId);
+
+  // get Reviews by ID
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const { results } = await getMovieReviews(movieId);
+        // console.log(' - results: ', results);
+        setReviews(results);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    fetchMovies();
+  }, [movieId]);
+
   return (
     <div>
       <h3>MovieReviews</h3>
+      {error && <h2>{error}</h2>}
+
       <ul>
-        <li>
-          <div className="review">
-            <h4>Author: QWEQWE</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Blanditiis alias repellendus quisquam eveniet inventore officiis
-              quod corrupti possimus, ex deleniti.
-            </p>
-          </div>
-        </li>
+        {reviews.map(review => {
+          return (
+            <li key={review.id}>
+              <div className={css.review}>
+                <h4>Author: {review.author}</h4>
+                <p>{review.content}</p>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
