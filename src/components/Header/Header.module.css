@@ -1,7 +1,4 @@
-.link {
-  font-size: 24px;
-}
-
-.active {
-  color: tomato;
+.header {
+  padding: 20px 30px;
+  box-shadow: 0px -5px 15px black;
 }

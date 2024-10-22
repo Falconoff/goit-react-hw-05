@@ -19,7 +19,7 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
 
-  padding: 20px;
+  padding: 0px;
 }
 
 h1,
@@ -32,12 +32,12 @@ p {
   margin: 0;
 }
 
-ul,
+/* ul,
 ol {
   margin: 0;
   padding: 0;
   list-style: none;
-}
+} */
 
 img {
   display: block;

@@ -1,0 +1,14 @@
+.additionalNav {
+  padding-block: 20px;
+  box-shadow: 0px 3px 0px grey, 0px -3px 0px grey;
+  margin-bottom: 20px;
+}
+
+.link {
+  color: black;
+  /* text-decoration: none; */
+}
+
+.active {
+  color: tomato;
+}
