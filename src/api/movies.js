@@ -4,7 +4,7 @@ const token =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTRjZWViMmYwYTcyNmI4OTg2ODE1ZjgzZTQyNTIwNSIsIm5iZiI6MTcyOTM3MDMwMS41ODUwOTksInN1YiI6IjYxODZmNDM0YzVjMWVmMDA4ODE2NTFjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nH3NALGFQYbjGrqOOfBJCCG6MhTt1I6IZddO-XsWvRo';
 
 const moviesInstance = axios.create({
-  baseURL: 'https://api.themoviedb.org/3/',
+  baseURL: 'https://api.themoviedb.org/3',
   headers: {
     Authorization: `Bearer ${token}`,
   },
@@ -21,15 +21,14 @@ export const getMovies = async params => {
   const { data } = await moviesInstance.get('/trending/movie/day', {
     params,
   });
-  // console.log('data:::', data);
 
   return data;
 };
 
-export const searchMovies = async q => {
-  const { data } = await moviesInstance.get('/search', {
+export const searchMovies = async query => {
+  const { data } = await moviesInstance.get('/search/movie', {
     params: {
-      q,
+      query,
     },
   });
   return data;

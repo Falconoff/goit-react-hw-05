@@ -12,14 +12,12 @@ const MovieCast = () => {
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
-  // console.log('MovieCast - movieId: ', movieId);
 
   // get Cast by ID
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const { cast } = await getMovieCast(movieId);
-        // console.log('MovieCast - cast: ', cast);
         setCast(cast);
       } catch (error) {
         setError(error.message);
@@ -32,6 +30,7 @@ const MovieCast = () => {
     <div>
       <h3>MovieCast</h3>
       {error && <h2>{error}</h2>}
+      {cast.length == 0 && <p>We didn`t find anything about it</p>}
 
       <ul>
         {cast.map(actor => {
@@ -45,7 +44,6 @@ const MovieCast = () => {
                       ? imageURL + actor.profile_path
                       : imgNotFound
                   }
-                  // src={imgNotFound}
                   alt={actor.name}
                 />
                 <p>{actor.name}</p>
@@ -54,14 +52,6 @@ const MovieCast = () => {
             </li>
           );
         })}
-
-        {/* <li>
-          <div className="actor">
-            <img src="" alt="" />
-            <p>name</p>
-            <p>Character: Batman</p>
-          </div>
-        </li> */}
       </ul>
     </div>
   );

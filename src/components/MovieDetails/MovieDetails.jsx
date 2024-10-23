@@ -16,7 +16,6 @@ const MovieDetails = ({ movieId }) => {
     const fetchMovies = async () => {
       try {
         const data = await getMovieById(movieId);
-        // console.log('data: ', data);
         setMovie(data);
         setGenres(makeGenresString(data.genres));
       } catch (error) {
@@ -27,21 +26,19 @@ const MovieDetails = ({ movieId }) => {
   }, [movieId]);
 
   const makeGenresString = genres => {
-    return genres.map(genre => genre.name).join(' ');
+    return genres.map(genre => genre.name).join(' | ');
   };
+
+  const posterUrl = movie.poster_path
+    ? imageURL + movie.poster_path
+    : imgNotFound;
 
   return (
     <div className={css.movieDetails}>
-      <h1 className="visuallyhidden">Movie Details Page</h1>
-
       {error && <h2>{error}</h2>}
 
       <div className={css.movieDetailsWrapper}>
-        <img
-          className={css.movieImg}
-          src={imageURL + movie.poster_path || imgNotFound}
-          alt={movie.title}
-        />
+        <img className={css.movieImg} src={posterUrl} alt={movie.title} />
         <div className="textWrap">
           <h2>{movie.title}</h2>
           <p>User Score: {movie.vote_average * 10}%</p>

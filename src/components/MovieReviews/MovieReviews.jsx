@@ -10,14 +10,12 @@ const MovieReviews = () => {
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
-  // console.log('MovieCast - movieId: ', movieId);
 
   // get Reviews by ID
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const { results } = await getMovieReviews(movieId);
-        // console.log(' - results: ', results);
         setReviews(results);
       } catch (error) {
         setError(error.message);
@@ -30,6 +28,7 @@ const MovieReviews = () => {
     <div>
       <h3>MovieReviews</h3>
       {error && <h2>{error}</h2>}
+      {reviews.length == 0 && <p>We don`t have any review for this movie.</p>}
 
       <ul>
         {reviews.map(review => {

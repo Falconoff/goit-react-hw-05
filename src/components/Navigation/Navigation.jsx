@@ -14,7 +14,7 @@ const Navigation = () => {
       <NavLink className={buildCssClasses} to="/movies">
         Movies
       </NavLink>
-      {/* <NavLink  to="/movies/:movieId">Movies</NavLink> */}
+
       <NavLink className={buildCssClasses} to="/about">
         About
       </NavLink>

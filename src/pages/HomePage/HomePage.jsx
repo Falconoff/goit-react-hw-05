@@ -1,11 +1,9 @@
-// import React from 'react';
 import { useState, useEffect } from 'react';
 
 import MovieList from '../../components/MovieList/MovieList';
 import { getMovies } from '../../api/movies';
 
 const HomePage = () => {
-  // const [count, setCount] = useState(0);
   const [movieList, setMovieList] = useState([]);
   const [error, setError] = useState(null);
 
@@ -14,7 +12,6 @@ const HomePage = () => {
     const fetchMovies = async () => {
       try {
         const data = await getMovies();
-        // console.log('data: ', data);
         setMovieList(data.results);
       } catch (error) {
         setError(error.message);
@@ -22,8 +19,6 @@ const HomePage = () => {
     };
     fetchMovies();
   }, []);
-
-  // console.log('HomePage movieList: ', movieList);
 
   return (
     <div>
